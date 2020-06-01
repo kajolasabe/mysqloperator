@@ -19,9 +19,7 @@
           spec:
             containers:
             - name: mysql
-              image: openshift/mysql-55-centos7
-              securityContext:
-                      privileged: true
+              image: quay.io/kajolasabe/mysqloperator:v0.0.1
               ports:
               - containerPort: 3306
               env:
