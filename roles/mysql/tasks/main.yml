@@ -20,19 +20,18 @@
             containers:
             - name: mysql
               image: quay.io/kajolasabe/mysqloperator:v0.0.1
-              securityContext:
-                privileged: true
               ports:
               - containerPort: 3306
+              envFrom: 
+               - configMapRef: 
+                  name: postgresql-cm 
               env:
-              - name: MYSQL_ROOT_PASSWORD
-                value: password
               - name: POD_NAME
                 valueFrom:
                   fieldRef:
                     fieldPath: metadata.name
               - name: OPERATOR_NAME
-                value: "example-mysql-mysql"
+                value: "example-mysql"
               volumeMounts:
               - name: mysql-data
                 mountPath: "/var/lib/mysql"
