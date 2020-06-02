@@ -20,6 +20,8 @@
             containers:
             - name: mysql
               image: quay.io/kajolasabe/mysqloperator:v0.0.1
+              securityContext:
+                privileged: true
               ports:
               - containerPort: 3306
               env:
