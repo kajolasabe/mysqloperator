@@ -22,10 +22,13 @@
               image: quay.io/kajolasabe/mysqloperator:v0.0.1
               ports:
               - containerPort: 3306
-              envFrom: 
-               - configMapRef: 
-                  name: postgresql-cm 
               env:
+              - name: MYSQL_DATABASE
+                value: mysqldb
+              - name: MYSQL_ROOT_USER
+                value: mysqladmin
+              - name: MYSQL_ROOT_PASSWORD
+                value: admin123
               - name: POD_NAME
                 valueFrom:
                   fieldRef:
