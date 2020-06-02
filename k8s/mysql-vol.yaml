@@ -2,7 +2,7 @@ kind: PersistentVolume
 apiVersion: v1
 metadata:
   name: mysql-pv-vol1
-  namespace: default
+  namespace: mysql
   labels:
     type: local
     app: mysql
