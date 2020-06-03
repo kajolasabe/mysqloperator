@@ -38,7 +38,7 @@
                   fieldRef:
                     fieldPath: metadata.name
               - name: OPERATOR_NAME
-                value: "example-mysql"
+                value: "example-mysql-mysql"
               volumeMounts:
               - name: mysql-data
                 mountPath: "/var/lib/mysql"
