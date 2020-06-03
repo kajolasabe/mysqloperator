@@ -2,10 +2,10 @@
 - name: start mysql
   k8s:
     definition:
-      kind: Deployment
-      apiVersion: v1
+      kind: StatefulSet
+      apiVersion: apps/v1
       metadata:
-        name: '{{ meta.name }}-mysql'
+        name: 'mysql-deployment'
         namespace: '{{ meta.namespace }}'
       spec:
         replicas: "{{size}}"
@@ -19,29 +19,15 @@
           spec:
             containers:
             - name: mysql
-              image: quay.io/kajolasabe/mysqloperator:v0.0.1
+              image: "{{image}}"
               ports:
               - containerPort: 3306
-              env:
-              - name: MYSQL_DATABASE
-                value: mysqldb
-              - name: MYSQL_ROOT_USER
-                value: mysqladmin
-              - name: MYSQL_ROOT_PASSWORD
-                value: admin123
-              - name: WATCH_NAMESPACE
-                valueFrom:
-                  fieldRef:
-                    fieldPath: metadata.namespace
-              - name: POD_NAME
-                valueFrom:
-                  fieldRef:
-                    fieldPath: metadata.name
-              - name: OPERATOR_NAME
-                value: "example-mysql-mysql"
+              envFrom: 
+               - configMapRef: 
+                  name: mysql-cm           
               volumeMounts:
               - name: mysql-data
-                mountPath: "/var/lib/mysql"
+                mountPath: "/mnt/data"
             volumes:
             - name: mysql-data
               persistentVolumeClaim:
