@@ -4,5 +4,5 @@ metadata:
   name: example-mysql
 spec:
   # Add fields here
-  image: quay.io/kajolasabe/mysqloperator:v0.0.1
+  image: openshift/mysql-55-centos7
   size: 1
