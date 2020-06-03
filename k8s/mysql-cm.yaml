@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
  name: mysql-cm
  labels:
-  app: postgres
+  app: mysql
 data:
   MYSQL_DATABASE: mysqldb
   MYSQL_USER: mysqladmin
