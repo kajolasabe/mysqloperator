@@ -4,4 +4,5 @@ metadata:
   name: example-mysql
 spec:
   # Add fields here
+  image: quay.io/kajolasabe/mysqloperator:v0.0.1
   size: 1
